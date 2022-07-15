@@ -1,25 +1,34 @@
 import React from "react";
 
-export const Artist = ({ slug }) => {
+export const ArtisteCard = ({ setSelectedWork, artWork, addToCart }) => {
+  const handleAddToCart = (e, art) => {
+    // this will stop the bubbling effect of the parent and child click events
+    e.stopPropagation();
+
+    // your actual handle action
+    addToCart(art);
+  };
   return (
-    <div to={`/${slug}/proposals/`} className="xl:w-1/3 md:w-1/2 w-full p-4">
+    <div
+      onClick={() => setSelectedWork(artWork)}
+      className="xl:w-1/3 md:w-1/2 w-full p-4 cursor-pointer"
+    >
       {/* <div className="p-4 md:w-1/3"> */}
       <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <img
           className="lg:h-48 md:h-36 w-full object-cover object-center"
-          src="https://dummyimage.com/720x400"
+          src={artWork.img || "https://dummyimage.com/720x400"}
           alt="blog"
         />
         <div className="p-6">
           <h1 className="title-font text-lg font-medium text-gray-900 mb-1">
-            The Catalyzer
+            {artWork.title}
           </h1>
           <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-3">
-            CATEGORY
+            {artWork.artist}
           </h2>
           <p className="leading-relaxed mb-3 three-liner">
-            Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-            microdosing tousled waistcoat.
+            {artWork.description}
           </p>
           <div className="flex items-center flex-wrap ">
             <a className="cursor-pointer text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
@@ -28,10 +37,10 @@ export const Artist = ({ slug }) => {
                 className="w-4 h-4 ml-2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path d="M5 12h14"></path>
                 <path d="M12 5l7 7-7 7"></path>
@@ -41,10 +50,10 @@ export const Artist = ({ slug }) => {
               <svg
                 className="w-4 h-4 mr-1"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 viewBox="0 0 24 24"
               >
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -56,10 +65,10 @@ export const Artist = ({ slug }) => {
               <svg
                 className="w-4 h-4 mr-1"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 viewBox="0 0 24 24"
               >
                 <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
@@ -68,7 +77,10 @@ export const Artist = ({ slug }) => {
             </span>
           </div>
           <hr className="mt-3 mb-4" />
-          <button className="text-white w-full bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+          <button
+            onClick={(e) => handleAddToCart(e, artWork)}
+            className="text-white w-full bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+          >
             Add to Vote Cart
           </button>
         </div>

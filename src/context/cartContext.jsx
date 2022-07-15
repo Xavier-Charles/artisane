@@ -5,21 +5,27 @@ export const CartContext = createContext(null);
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
+  const LS_CART = "cart"
+
   const addToCart = (art) => {
-    const newCart = [...prev, art];
-    setCart((prev) => [...prev, art]);
-    localStorage.setItem("cart", newCart)
+    setCart((prev) => {
+      if (prev.find((a) => a._id === art._id)) return prev;
+      localStorage.setItem(LS_CART, [...prev, art]);
+      return [...prev, art];
+    });
   };
 
   const removeFromCart = (art) => {
-    const newCart = cart.filter((cart) => cart._id !== art._id);
-    setCart((prev) => [...prev, art]);
-    localStorage.setItem("cart", newCart);
+    setCart((prev) => {
+      const newCart = prev.filter((a) => a._id !== art._id);
+      localStorage.setItem(LS_CART, newCart);
+      return newCart;
+    });
   };
 
   useEffect(() => {
     (async () => {
-      const localCart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const localCart = JSON.parse(localStorage.getItem(LS_CART) || "[]");
       if (localCart.length > 0) setCart([...localCart]);
     })();
   }, []);

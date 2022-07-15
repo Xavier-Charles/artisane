@@ -1,6 +1,6 @@
 import React from "react";
 
-const Preview = ({ openCart, setOpenCart }) => {
+const Preview = ({ openCart, setSelectedWork }) => {
   return (
     <div
       className="relative z-10"
@@ -26,7 +26,7 @@ const Preview = ({ openCart, setOpenCart }) => {
                       <button
                         type="button"
                         className="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                        onClick={() => setOpenCart(false)}
+                        onClick={() => setSelectedWork(null)}
                       >
                         <span className="sr-only">Close panel</span>
                         {/* <!-- Heroicon name: outline/x --> */}
@@ -35,13 +35,13 @@ const Preview = ({ openCart, setOpenCart }) => {
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
-                          stroke-width="2"
+                          strokeWidth="2"
                           stroke="currentColor"
                           aria-hidden="true"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             d="M6 18L18 6M6 6l12 12"
                           />
                         </svg>
