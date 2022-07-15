@@ -82,7 +82,7 @@ const Preview = ({ openCart, setSelectedWork }) => {
                               <div className="flex">
                                 <button
                                   type="button"
-                                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                                  className="font-medium text-tan hover:text-tan"
                                 >
                                   Remove
                                 </button>
@@ -116,7 +116,7 @@ const Preview = ({ openCart, setSelectedWork }) => {
                               <div className="flex">
                                 <button
                                   type="button"
-                                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                                  className="font-medium text-tan hover:text-tan"
                                 >
                                   Remove
                                 </button>
@@ -142,7 +142,7 @@ const Preview = ({ openCart, setSelectedWork }) => {
                   <div className="mt-6">
                     <a
                       href="#"
-                      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                      className="flex items-center justify-center rounded-md border border-transparent bg-tan px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-tan-700"
                     >
                       Checkout
                     </a>
@@ -152,7 +152,7 @@ const Preview = ({ openCart, setSelectedWork }) => {
                       or{" "}
                       <button
                         type="button"
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                        className="font-medium text-tan hover:text-tan"
                       >
                         Continue Shopping<span aria-hidden="true"> &rarr;</span>
                       </button>

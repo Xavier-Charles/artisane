@@ -1,6 +1,11 @@
 import React from "react";
 
-export const ArtisteCard = ({ setSelectedWork, artWork, addToCart }) => {
+export const ArtisteCard = ({
+  setSelectedWork,
+  artWork,
+  addToCart,
+  isInCart,
+}) => {
   const handleAddToCart = (e, art) => {
     // this will stop the bubbling effect of the parent and child click events
     e.stopPropagation();
@@ -31,7 +36,7 @@ export const ArtisteCard = ({ setSelectedWork, artWork, addToCart }) => {
             {artWork.description}
           </p>
           <div className="flex items-center flex-wrap ">
-            <a className="cursor-pointer text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+            <a className="cursor-pointer text-tan inline-flex items-center md:mb-2 lg:mb-0">
               Full view
               <svg
                 className="w-4 h-4 ml-2"
@@ -79,9 +84,12 @@ export const ArtisteCard = ({ setSelectedWork, artWork, addToCart }) => {
           <hr className="mt-3 mb-4" />
           <button
             onClick={(e) => handleAddToCart(e, artWork)}
-            className="text-white w-full bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+            disabled={isInCart}
+            className={`text-white w-full ${
+              isInCart ? "bg-cadet hover:bg-cadet" : "bg-tan hover:bg-tan"
+            } border-0 py-2 px-6 focus:outline-none  rounded text-lg`}
           >
-            Add to Vote Cart
+            {isInCart ? "In Cart" : "Add to Vote Cart"}
           </button>
         </div>
       </div>

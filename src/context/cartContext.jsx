@@ -10,7 +10,7 @@ const CartContextProvider = ({ children }) => {
   const addToCart = (art) => {
     setCart((prev) => {
       if (prev.find((a) => a._id === art._id)) return prev;
-      localStorage.setItem(LS_CART, [...prev, art]);
+      localStorage.setItem(LS_CART, JSON.stringify([...prev, art]));
       return [...prev, art];
     });
   };
@@ -18,7 +18,7 @@ const CartContextProvider = ({ children }) => {
   const removeFromCart = (art) => {
     setCart((prev) => {
       const newCart = prev.filter((a) => a._id !== art._id);
-      localStorage.setItem(LS_CART, newCart);
+      localStorage.setItem(LS_CART, JSON.stringify(newCart));
       return newCart;
     });
   };

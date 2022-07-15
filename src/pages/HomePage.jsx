@@ -33,6 +33,7 @@ function Home() {
               setSelectedWork={setSelectedWork}
               artWork={a}
               addToCart={addToCart}
+              isInCart={cart.find((art) => a._id === art._id)}
             />
           ))}
         </div>
