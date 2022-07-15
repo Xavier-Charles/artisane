@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.three-liner {
+        position: relative;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-overflow: elipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
