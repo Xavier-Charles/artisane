@@ -1,4 +1,5 @@
 import React from "react";
+import AddToCartButton from "./AddToCartButton";
 
 export const ArtisteCard = ({
   setSelectedWork,
@@ -32,7 +33,7 @@ export const ArtisteCard = ({
           <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-3">
             {artWork.artist}
           </h2>
-          <p className="leading-relaxed mb-3 three-liner">
+          <p className="leading-relaxed mb-3 three-liner text-gray-500">
             {artWork.description}
           </p>
           <div className="flex items-center flex-wrap ">
@@ -82,15 +83,10 @@ export const ArtisteCard = ({
             </span>
           </div>
           <hr className="mt-3 mb-4" />
-          <button
+          <AddToCartButton
             onClick={(e) => handleAddToCart(e, artWork)}
-            disabled={isInCart}
-            className={`text-white w-full ${
-              isInCart ? "bg-cadet hover:bg-cadet" : "bg-tan hover:bg-tan"
-            } border-0 py-2 px-6 focus:outline-none  rounded text-lg`}
-          >
-            {isInCart ? "In Cart" : "Add to Vote Cart"}
-          </button>
+            isInCart={isInCart}
+          />
         </div>
       </div>
     </div>

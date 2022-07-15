@@ -41,8 +41,9 @@ function Home() {
       {selectedWork && (
         <Preview
           selectedWork={selectedWork}
-          setSelectedWork={setSelectedWork}
           addToCart={addToCart}
+          isInCart={cart.find((art) => selectedWork._id === art._id)}
+          closePreview={() => setSelectedWork(null)}
         />
       )}
     </>
