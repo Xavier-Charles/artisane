@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/png/logo2.png";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
@@ -15,7 +15,8 @@ const navigation = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const Navbar = ({ setOpenCart }) => {
+const Navbar = () => {
+  const navigate = useNavigate()
   // const { user, udUser, signOut, authenticated } = useContext(UserContext);
   const authenticated = undefined;
 
@@ -74,7 +75,7 @@ const Navbar = ({ setOpenCart }) => {
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
-                  onClick={() => setOpenCart(true)}
+                  onClick={() => navigate("/cart")}
                   className="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700"
                 >
                   <a role="button" className="relative flex">
