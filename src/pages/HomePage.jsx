@@ -65,7 +65,11 @@ const HomePage = () => {
           <div className="absolute -left-1 bottom-2 bg-white opacity-70 rounded h-auto flex">
             <span className="pl-6 px-4 py-1.5 text-sm md:text-lg font-serif text-tan">
               by:{" "}
-              <a className="capitalize" target="_blank" href={image.link}>
+              <a
+                className="capitalize"
+                target="_blank"
+                // href={image.link}
+              >
                 {image.artist}
               </a>
             </span>
