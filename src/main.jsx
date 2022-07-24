@@ -4,7 +4,7 @@ import "./assets/css/artisan.css";
 import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import CartContextProvider from "./context/cartContext";
-// import MoralisInitProvider from "./context/MoralisInitContext";
+import MoralisInitProvider from "./context/MoralisInitContext";
 // import UserContextProvider from "./context/UserContext";
 
 const container = document.getElementById("root");
@@ -17,11 +17,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <CartContextProvider>
-        {/* <MoralisInitProvider>
-        <UserContextProvider> */}
+        <MoralisInitProvider>
+        {/* <UserContextProvider> */}
         <Router />
-        {/* </UserContextProvider>
-      </MoralisInitProvider> */}
+        {/* </UserContextProvider> */}
+      </MoralisInitProvider>
       </CartContextProvider>
     </BrowserRouter>
   </React.StrictMode>
