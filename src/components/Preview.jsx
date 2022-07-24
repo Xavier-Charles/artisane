@@ -2,8 +2,7 @@ import React from "react";
 import AddToCartButton from "./AddToCartButton";
 
 const Preview = ({ selectedWork, closePreview, isInCart, addToCart }) => {
-  const {artistFN, artistLN, artist, title, img, description } =
-    selectedWork;
+  const { artistFN, artistLN, artist, title, img, description } = selectedWork;
   return (
     <div
       className="relative z-10"

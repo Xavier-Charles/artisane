@@ -28,20 +28,20 @@ const Navbar = ({ cartCount }) => {
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                {/* <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
                     <MenuIcon className="block h-6 w-6" aria-hidden="true" />
                   )}
-                </Disclosure.Button>
+                </Disclosure.Button> */}
               </div>
-              <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-between">
+              <div className="flex-1 flex items-center sm:items-stretch justify-between">
                 <div className="flex-shrink-0 flex items-center">
                   <Link
                     to="/"
-                    className="cursor-pointer flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 rounded-sm"
+                    className="cursor-pointer flex title-font font-medium items-center text-gray-900 rounded-sm"
                   >
                     <div className="flex justify-center items-center h-[50px]">
                       <img
@@ -76,7 +76,7 @@ const Navbar = ({ cartCount }) => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   onClick={() => navigate("/cart")}
-                  className="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700"
+                  className="font-sans block lg:inline-block lg:ml-6 align-middle text-black hover:text-gray-700"
                 >
                   <a role="button" className="relative flex">
                     <svg
