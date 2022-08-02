@@ -7,19 +7,23 @@ const SalesPitch = ({ link }) => {
     <section>
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-          <h1 className=" text-3xl lg:text-5xl xl:text-7xl font-sans mb-4 font-bold text-[#ffffef]">
+          <h1 className=" text-3xl lg:text-5xl xl:text-7xl font-sans mb-12 font-bold text-[#ffffef]">
             Create Digital Art for a chance to win{" "}
-            <span className="font-sans">$1000</span>
+            <span className="font-sans text-[#ddffdd]">$1000</span>
           </h1>
-          <p className="mb-8 leading-relaxed text-gold font-mono">
-            A 4-week Digital Art competition for the best
+          <p className="mb-8 leading-relaxed text-gold font-mono max-w-xl">
+            Artisane is a Digital art competition for the undiscovered digital
+            artists. If you have the skills let the world see your work.
+          </p>
+          <p className="mb-8 leading-relaxed text-gold font-mono max-w-xl">
+            Top artists will join our
+            genesis NFT collection. Submissions open 20th of August, 2022. 
           </p>
           <div className="flex justify-center">
             <a
               href={link}
               target="_blank"
               className="button-52 text-[#ffffef] font-mono"
-              // className="inline-flex cursor-pointer text-white hover:bg-tan bg-brown border-0 pb-2 pt-1.5 px-6 focus:outline-none rounded-md text-lg"
             >
               I'm in!
             </a>
