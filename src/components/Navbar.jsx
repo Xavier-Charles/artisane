@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/png/logo2.png";
+import ballot from "../assets/png/ballot.png";
 import { ReactComponent as CartSVG } from "../assets/svg/cart.svg";
 import { Disclosure } from "@headlessui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -49,9 +50,12 @@ const Navbar = ({ ballotCount, noballot }) => {
                     className="font-sans block lg:inline-block lg:ml-6 align-middle text-black hover:text-gray-700"
                   >
                     <a role="button" className="relative flex">
-                      <CartSVG className="flex-1 w-6 h-6 fill-tan ml-2" />
+                      <img
+                        src={ballot}
+                        className="flex-1 w-6 h-6 fill-tan ml-2"
+                      />
                       {ballotCount ? (
-                        <span className="absolute left-3 bottom-2.5 rounded-full bg-red-600 top right px-1 pt-[0.5px] m-0 text-white font-mono text-xs  leading-tight text-center">
+                        <span className="absolute left-6 bottom-1.5 rounded-full bg-red-600 top right px-1 pt-[0.5px] m-0 text-white font-mono text-xs  leading-tight text-center">
                           {ballotCount}
                         </span>
                       ) : (

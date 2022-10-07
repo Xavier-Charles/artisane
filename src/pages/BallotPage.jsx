@@ -1,4 +1,5 @@
 import { useCallback, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import BallotItem from "../components/BallotItem";
 import Navbar from "../components/Navbar";
 import { BallotContext } from "../context/ballotContext";
@@ -71,12 +72,16 @@ function Ballot() {
                 </div>
                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                   <p>
-                    <button
-                      type="button"
+                    <Link
+                      to="/contest"
                       className="font-medium text-tan hover:text-tan"
                     >
-                      Continue Viewing<span className="pt-1" aria-hidden="true"> &rarr;</span>
-                    </button>
+                      Continue Viewing
+                      <span className="pt-1" aria-hidden="true">
+                        {" "}
+                        &rarr;
+                      </span>
+                    </Link>
                   </p>
                 </div>
               </div>
