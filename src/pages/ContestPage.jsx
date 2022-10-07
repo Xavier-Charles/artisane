@@ -1,21 +1,11 @@
 import { useContext, useState } from "react";
+import { artWorks } from "../api/mocks";
 import { ArtisteCard } from "../components/ArtisteCard";
 import Navbar from "../components/Navbar";
 import Preview from "../components/Preview";
 import { BallotContext } from "../context/ballotContext";
 
-const artWorks = [
-  {
-    _id: "qwertyui",
-    artistFN: "Oshea",
-    artistLN: "Drake",
-    artist: "Izzako",
-    title: "An Unbound Hatch",
-    img: "https://i.imgur.com/E0T2Fhi.png",
-    description:
-      "Learning how to express one's self can be in immersive journey. Every choice you make and every door you enter both physical and imaginative can change the course of your life. I chose freedom, regardless of how i was feeling inside. These past months has been a blur and all I've learned from this befuddled idling was to just be me.",
-  },
-];
+
 
 function Contest() {
   const { ballot, addToBallot } = useContext(BallotContext);
