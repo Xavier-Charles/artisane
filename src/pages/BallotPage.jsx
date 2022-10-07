@@ -2,7 +2,7 @@ import { useCallback, useContext, useState } from "react";
 import { ArtisteCard } from "../components/ArtisteCard";
 import Navbar from "../components/Navbar";
 import Preview from "../components/Preview";
-import { CartContext } from "../context/cartContext";
+import { BallotContext } from "../context/ballotContext";
 
 const artWorks = [
   {
@@ -17,27 +17,27 @@ const artWorks = [
   },
 ];
 
-function Cart() {
-  const { cart, updateCart, removeFromCart } = useContext(CartContext);
+function Ballot() {
+  const { ballot, updateBallot, removeFromBallot } = useContext(BallotContext);
 
-  const updateCartCount = useCallback((art, type) => {
-    const newCart = {
+  const updateBallotCount = useCallback((art, type) => {
+    const newBallot = {
       ...art,
-      cartCount:
+      ballotCount:
         type === "increment"
-          ? art.cartCount + 1
-          : type === "decrement" && art.cartCount > 1
-          ? art.cartCount - 1
-          : art.cartCount,
+          ? art.ballotCount + 1
+          : type === "decrement" && art.ballotCount > 1
+          ? art.ballotCount - 1
+          : art.ballotCount,
     };
-    updateCart(newCart);
+    updateBallot(newBallot);
   }, []);
 
   return (
     <>
       <div className="w-fullh-full max-w-7xl mx-auto">
-        <Navbar cartCount={cart.length} />
-        {cart.length > 0 ? (
+        <Navbar ballotCount={ballot.length} />
+        {ballot.length > 0 ? (
           <div className="pointer-events-auto w-full flex justify-center">
             <div className="flex flex-col w-full max-w-xl px-2">
               <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
@@ -46,14 +46,14 @@ function Cart() {
                     className="text-lg font-medium text-gray-900"
                     id="slide-over-title"
                   >
-                    Vote cart
+                    Vote ballot
                   </h2>
                 </div>
 
                 <div className="mt-8">
                   <div className="flow-root">
                     <ul role="list" className="-my-6 divide-y divide-gray-200">
-                      {cart.map((art) => (
+                      {ballot.map((art) => (
                         <li key={art._id} className="flex py-6">
                           <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                             <img
@@ -74,7 +74,7 @@ function Cart() {
                                     notation: "compact",
                                     style: "currency",
                                     maximumFractionDigits: 2,
-                                  }).format(art.cartCount * 10)}
+                                  }).format(art.ballotCount * 10)}
                                 </p>
                               </div>
                               <p className="mt-1 text-sm text-gray-500">
@@ -87,7 +87,7 @@ function Cart() {
                                   className="fill-current text-gray-600 w-2.5 cursor-pointer"
                                   viewBox="0 0 448 512"
                                   onClick={() =>
-                                    updateCartCount(art, "decrement")
+                                    updateBallotCount(art, "decrement")
                                   }
                                 >
                                   <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
@@ -96,7 +96,7 @@ function Cart() {
                                 <input
                                   className="mx-2 border text-center w-8"
                                   type="text"
-                                  value={art.cartCount}
+                                  value={art.ballotCount}
                                   // disabled
                                 />
 
@@ -104,7 +104,7 @@ function Cart() {
                                   className="fill-current text-gray-600 w-2.5 cursor-pointer"
                                   viewBox="0 0 448 512"
                                   onClick={() =>
-                                    updateCartCount(art, "increment")
+                                    updateBallotCount(art, "increment")
                                   }
                                 >
                                   <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
@@ -115,7 +115,7 @@ function Cart() {
                                 <button
                                   type="button"
                                   className="font-medium text-tan hover:text-tan"
-                                  onClick={() => removeFromCart(art)}
+                                  onClick={() => removeFromBallot(art)}
                                 >
                                   Remove
                                 </button>
@@ -163,7 +163,7 @@ function Cart() {
           </div>
         ) : (
           <h1 className="mt-20 text-center font-serif text-lg md:text-2xl">
-            Your cart is empty
+            Your ballot is empty
           </h1>
         )}
       </div>
@@ -171,4 +171,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default Ballot;

@@ -1,7 +1,7 @@
 import React from "react";
-import AddToCartButton from "./AddToCartButton";
+import AddToBallotButton from "./AddToBallotButton";
 
-const Preview = ({ selectedWork, closePreview, isInCart, addToCart }) => {
+const Preview = ({ selectedWork, closePreview, isInBallot, addToBallot }) => {
   const { artistFN, artistLN, artist, title, img, description } = selectedWork;
   return (
     <div
@@ -75,9 +75,9 @@ const Preview = ({ selectedWork, closePreview, isInCart, addToCart }) => {
                   </div>
                   <p className="mt-0.5 text-sm text-gray-500">{description}</p>
                   <div className="mt-6">
-                    <AddToCartButton
-                      onClick={() => addToCart(selectedWork)}
-                      isInCart={isInCart}
+                    <AddToBallotButton
+                      onClick={() => addToBallot(selectedWork)}
+                      isInBallot={isInBallot}
                     />
                   </div>
                 </div>
