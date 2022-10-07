@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { ArtisteCard } from "../components/ArtisteCard";
 import Navbar from "../components/Navbar";
 import Preview from "../components/Preview";
-import { CartContext } from "../context/cartContext";
+import { BallotContext } from "../context/ballotContext";
 
 const artWorks = [
   {
@@ -18,22 +18,22 @@ const artWorks = [
 ];
 
 function Contest() {
-  const { cart, addToCart } = useContext(CartContext);
+  const { ballot, addToBallot } = useContext(BallotContext);
 
   const [selectedWork, setSelectedWork] = useState(null);
 
   return (
     <>
       <div className="w-fullh-full max-w-7xl mx-auto">
-        <Navbar cartCount={cart.length} />
+        <Navbar ballotCount={ballot.length} />
         <div className="w-full flex flex-wrap">
           {artWorks.map((a) => (
             <ArtisteCard
               key={a._id}
               setSelectedWork={setSelectedWork}
               artWork={a}
-              addToCart={addToCart}
-              isInCart={cart.find((art) => a._id === art._id)}
+              addToBallot={addToBallot}
+              isInBallot={ballot.find((art) => a._id === art._id)}
             />
           ))}
         </div>
@@ -41,8 +41,8 @@ function Contest() {
       {selectedWork && (
         <Preview
           selectedWork={selectedWork}
-          addToCart={addToCart}
-          isInCart={cart.find((art) => selectedWork._id === art._id)}
+          addToBallot={addToBallot}
+          isInBallot={ballot.find((art) => selectedWork._id === art._id)}
           closePreview={() => setSelectedWork(null)}
         />
       )}

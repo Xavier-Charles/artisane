@@ -3,7 +3,7 @@ import * as ReactDOMClient from "react-dom/client";
 import "./assets/css/artisan.css";
 import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
-import CartContextProvider from "./context/cartContext";
+import BallotContextProvider from "./context/ballotContext";
 import MoralisInitProvider from "./context/MoralisInitContext";
 import WalletProvider from "./provider/WalletProvider";
 // import UserContextProvider from "./context/UserContext";
@@ -18,13 +18,13 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <WalletProvider>
-        <CartContextProvider>
+        <BallotContextProvider>
           <MoralisInitProvider>
             {/* <UserContextProvider> */}
             <Router />
             {/* </UserContextProvider> */}
           </MoralisInitProvider>
-        </CartContextProvider>
+        </BallotContextProvider>
       </WalletProvider>
     </BrowserRouter>
   </React.StrictMode>

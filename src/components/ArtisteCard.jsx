@@ -1,18 +1,18 @@
 import React from "react";
-import AddToCartButton from "./AddToCartButton";
+import AddToBallotButton from "./AddToBallotButton";
 
 export const ArtisteCard = ({
   setSelectedWork,
   artWork,
-  addToCart,
-  isInCart,
+  addToBallot,
+  isInBallot,
 }) => {
-  const handleAddToCart = (e, art) => {
+  const handleAddToBallot = (e, art) => {
     // this will stop the bubbling effect of the parent and child click events
     e.stopPropagation();
 
     // your actual handle action
-    addToCart(art);
+    addToBallot(art);
   };
   return (
     <div
@@ -83,9 +83,9 @@ export const ArtisteCard = ({
             </span>
           </div>
           <hr className="mt-3 mb-4" />
-          <AddToCartButton
-            onClick={(e) => handleAddToCart(e, artWork)}
-            isInCart={isInCart}
+          <AddToBallotButton
+            onClick={(e) => handleAddToBallot(e, artWork)}
+            isInBallot={isInBallot}
           />
         </div>
       </div>
