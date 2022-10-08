@@ -1,6 +1,6 @@
 import React from "react";
 
-const BallotItem = ({ art }) => {
+const BallotItem = ({ art, removeFromBallot }) => {
   return (
     <li key={art._id} className="flex py-6">
       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
