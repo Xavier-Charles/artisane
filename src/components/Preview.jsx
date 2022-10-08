@@ -18,10 +18,10 @@ const Preview = ({ selectedWork, closePreview, isInBallot, addToBallot }) => {
             <div className="pointer-events-auto w-screen max-w-3xl">
               <div
                 onClick={(e) => e.stopPropagation()}
-                className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl"
+                className="flex h-full w-screen sm:w-full flex-col overflow-y-scroll bg-white shadow-xl"
               >
-                <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
-                  <div className="flex items-start justify-between">
+                <div className="flex-1 overflow-y-auto py-6">
+                  <div className="flex items-start justify-between px-4 sm:px-6">
                     <h2
                       className="text-lg font-medium text-gray-900"
                       id="slide-over-title"

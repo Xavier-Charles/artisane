@@ -17,6 +17,20 @@ const artWorks = [
   },
 ];
 
+const ContinueView = () => (
+  <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+    <p>
+      <Link to="/contest" className="font-medium text-tan hover:text-tan">
+        Continue Viewing
+        <span className="pt-1" aria-hidden="true">
+          {" "}
+          &rarr;
+        </span>
+      </Link>
+    </p>
+  </div>
+);
+
 function Ballot() {
   const { ballot, updateBallot, removeFromBallot } = useContext(BallotContext);
 
@@ -54,7 +68,10 @@ function Ballot() {
                   <div className="flow-root">
                     <ul role="list" className="-my-6 divide-y divide-gray-200">
                       {ballot.map((art) => (
-                        <BallotItem art={art} />
+                        <BallotItem
+                          art={art}
+                          removeFromBallot={removeFromBallot}
+                        />
                       ))}
                     </ul>
                   </div>
@@ -70,27 +87,17 @@ function Ballot() {
                     Submit
                   </a>
                 </div>
-                <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                  <p>
-                    <Link
-                      to="/contest"
-                      className="font-medium text-tan hover:text-tan"
-                    >
-                      Continue Viewing
-                      <span className="pt-1" aria-hidden="true">
-                        {" "}
-                        &rarr;
-                      </span>
-                    </Link>
-                  </p>
-                </div>
+                <ContinueView />
               </div>
             </div>
           </div>
         ) : (
-          <h1 className="mt-20 text-center font-serif text-lg md:text-2xl">
-            Your ballot is empty
-          </h1>
+          <>
+            <h1 className="mt-20 text-center font-serif text-lg md:text-2xl">
+              Your ballot is empty
+            </h1>
+            <ContinueView />
+          </>
         )}
       </div>
     </>
