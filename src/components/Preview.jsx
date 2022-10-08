@@ -20,7 +20,7 @@ const Preview = ({ selectedWork, closePreview, isInBallot, addToBallot }) => {
                 onClick={(e) => e.stopPropagation()}
                 className="flex h-full w-screen sm:w-full flex-col overflow-y-scroll bg-white shadow-xl"
               >
-                <div className="flex-1 overflow-y-auto py-6">
+                <div className="flex-1 overflow-y-auto pt-6">
                   <div className="flex items-start justify-between px-4 sm:px-6">
                     <h2
                       className="text-lg font-medium text-gray-900"
