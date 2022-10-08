@@ -20,10 +20,10 @@ const Preview = ({ selectedWork, closePreview, isInBallot, addToBallot }) => {
                 onClick={(e) => e.stopPropagation()}
                 className="flex h-full w-screen sm:w-full flex-col overflow-y-scroll bg-white shadow-xl"
               >
-                <div className="flex-1 overflow-y-auto pt-6">
-                  <div className="flex items-start justify-between px-4 sm:px-6">
+                <div className="flex-1 overflow-y-auto">
+                  <div className="flex items-start justify-between py-2 sm:py-3.5 px-4 sm:px-6">
                     <h2
-                      className="text-lg font-medium text-gray-900"
+                      className="text-base sm:text-lg leading-none self-center font-medium text-gray-900"
                       id="slide-over-title"
                     >
                       Preview
@@ -37,7 +37,7 @@ const Preview = ({ selectedWork, closePreview, isInBallot, addToBallot }) => {
                         <span className="sr-only">Close panel</span>
                         {/* <!-- Heroicon name: outline/x --> */}
                         <svg
-                          className="h-6 w-6"
+                          className="h-5 w-5 sm:h-6 sm:w-6"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -55,7 +55,7 @@ const Preview = ({ selectedWork, closePreview, isInBallot, addToBallot }) => {
                     </div>
                   </div>
 
-                  <div className="mt-8">
+                  <div className="">
                     <div className="flow-root">
                       <img className="w-full" src={img} />
                     </div>
