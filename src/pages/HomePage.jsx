@@ -54,12 +54,12 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="bg-black">
+    <div className="bg-black h-screen overflow-hidden">
       {Object.values(images).map((image) => (
         <FadeInOut
           key={image.id}
           show={images[selected].id === image.id}
-          duration={500}
+          duration={600}
         >
           {image.img}
           <div className="absolute -left-1 bottom-2 bg-white opacity-70 rounded h-auto flex">
@@ -68,7 +68,6 @@ const HomePage = () => {
               <a
                 className="capitalize"
                 target="_blank"
-                // href={image.link}
               >
                 {image.artist}
               </a>
