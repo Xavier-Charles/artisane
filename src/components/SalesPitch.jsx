@@ -17,7 +17,7 @@ const SalesPitch = ({ link }) => {
           </p>
           <p className="mb-8 leading-relaxed text-gold font-mono max-w-xl">
             Top artists will join our
-            genesis NFT collection. Submissions open 20th of August, 2022. 
+            genesis NFT collection. Submissions open 20th of January, 2023. 
           </p>
           <div className="flex justify-center">
             <a
