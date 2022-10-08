@@ -15,7 +15,7 @@ We are building a platform that collects art from talented digital artists and a
 
 The platform comprises of various aspects:
 
-#### [The voting application] (https://artisane.vercel.app/contest)
+#### The voting application https://artisane.vercel.app/contest
 Voting is gasless hence will be built on IPFS once the user connects & verifies a wallet (Using Moralis SDK) to vote. 
 Votes are stored on IPFS and can be verified. (Similar to [Tribunals](https://github.com/Xavier-Charles/tribunal)). We are consideirng using a humanity check solution. e.g Worldcoin
 
