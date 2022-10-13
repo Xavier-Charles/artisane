@@ -24,7 +24,7 @@ const actionCodeSettings = {
     installApp: true,
     minimumVersion: "12",
   },
-  dynamicLinkDomain: "artisane.vercel.app/",
+  dynamicLinkDomain: "artisane.vercel.app",
 };
 
 const firebaseApp = getApps().length
