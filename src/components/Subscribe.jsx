@@ -11,7 +11,9 @@ const Subscribe = () => {
       <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
         Subscribe
       </h2>
-      {response?.status === "success" && <span className="text-green-500">Email added sucessfully</span>}
+      {response?.status === "success" && (
+        <span className="text-green-500">Email added sucessfully</span>
+      )}
       <p className="leading-relaxed mb-5 text-gray-600">
         Post-ironic portland shabby chic echo park, banjo fashion axe
       </p>
