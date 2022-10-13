@@ -4,7 +4,6 @@ import "./assets/css/artisan.css";
 import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import BallotContextProvider from "./context/ballotContext";
-import MoralisInitProvider from "./context/MoralisInitContext";
 import WalletProvider from "./provider/WalletProvider";
 
 const container = document.getElementById("root");
@@ -18,9 +17,7 @@ root.render(
     <BrowserRouter>
       <WalletProvider>
         <BallotContextProvider>
-          <MoralisInitProvider>
             <Router />
-          </MoralisInitProvider>
         </BallotContextProvider>
       </WalletProvider>
     </BrowserRouter>
