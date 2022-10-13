@@ -10,21 +10,14 @@ const clientCredentials = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
+const appUrl = "artisane-git-fix-subscribe-xavier-charles.vercel.app";
+
 const actionCodeSettings = {
   // URL you want to redirect back to. The domain (www.example.com) for this
   // URL must be in the authorized domains list in the Firebase Console.
-  url: "https://artisane.vercel.app/signup",
+  url: `https://${appUrl}/subscribe`,
   // This must be true.
   handleCodeInApp: true,
-  iOS: {
-    bundleId: "com.example.ios",
-  },
-  android: {
-    packageName: "com.example.android",
-    installApp: true,
-    minimumVersion: "12",
-  },
-  dynamicLinkDomain: "artisane-git-fix-subscribe-xavier-charles.vercel.app", // TODO: update this
 };
 
 const firebaseApp = getApps().length
