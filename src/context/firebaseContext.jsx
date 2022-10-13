@@ -24,8 +24,7 @@ const actionCodeSettings = {
     installApp: true,
     minimumVersion: "12",
   },
-  dynamicLinkDomain:
-    "artisane-git-fix-subscribe-xavier-charles.vercel.app", //TODO: update this
+  dynamicLinkDomain: "artisane-git-fix-subscribe-xavier-charles.vercel.app", // TODO: update this
 };
 
 const firebaseApp = getApps().length
