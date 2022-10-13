@@ -31,7 +31,7 @@ const firebaseApp = getApps().length
   ? getApp()
   : initializeApp(clientCredentials);
 
-export const handleEmailSubscribe = ({ name, email, callback }) => {
+export const handleEmailSubscribe = (name, email, callback) => {
   const auth = getAuth(firebaseApp);
   sendSignInLinkToEmail(auth, email, actionCodeSettings)
     .then(() => {
