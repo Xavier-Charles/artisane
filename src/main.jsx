@@ -6,7 +6,6 @@ import { BrowserRouter } from "react-router-dom";
 import BallotContextProvider from "./context/ballotContext";
 import MoralisInitProvider from "./context/MoralisInitContext";
 import WalletProvider from "./provider/WalletProvider";
-// import UserContextProvider from "./context/UserContext";
 
 const container = document.getElementById("root");
 
@@ -20,9 +19,7 @@ root.render(
       <WalletProvider>
         <BallotContextProvider>
           <MoralisInitProvider>
-            {/* <UserContextProvider> */}
             <Router />
-            {/* </UserContextProvider> */}
           </MoralisInitProvider>
         </BallotContextProvider>
       </WalletProvider>
