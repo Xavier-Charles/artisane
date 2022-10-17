@@ -12,7 +12,7 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/contest" element={<Contest />} />
         <Route path="/ballot" element={<Ballot />} />
-        <Route path="/connectWallet" element={<ConnectWalletPage />} />
+        <Route path="/connect-wallet" element={<ConnectWalletPage />} />
         <Route path="/subscribe" element={<SubscribePage />} />
       </Routes>
     </BrowserRouter>

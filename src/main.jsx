@@ -4,6 +4,7 @@ import "./assets/css/artisan.css";
 import Router from "./Router";
 import BallotContextProvider from "./context/ballotContext";
 import WalletProvider from "./provider/WalletProvider";
+import UserContextProvider from "./context/userContext";
 
 const container = document.getElementById("root");
 
@@ -13,10 +14,12 @@ const root = ReactDOMClient.createRoot(container);
 // Initial render: Render an element to the root.
 root.render(
   <React.StrictMode>
-      <WalletProvider>
-        <BallotContextProvider>
-            <Router />
-        </BallotContextProvider>
-      </WalletProvider>
+    <WalletProvider>
+      <BallotContextProvider>
+        <UserContextProvider>
+          <Router />
+        </UserContextProvider>
+      </BallotContextProvider>
+    </WalletProvider>
   </React.StrictMode>
 );
