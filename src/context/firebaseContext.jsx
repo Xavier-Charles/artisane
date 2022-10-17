@@ -5,7 +5,11 @@ import {
   signInWithEmailLink,
   sendSignInLinkToEmail,
 } from "firebase/auth";
-import { setDoc, getFirestore, doc } from "firebase/firestore";
+import { setDoc, getFirestore, doc, getDoc } from "firebase/firestore";
+
+const APP_URL = "artisane-git-fix-subscribe-xavier-charles.vercel.app";
+const LS_NAME_FOR_SIGN_IN = "nameForSignIn";
+const LS_EMAIL_FOR_SIGN_IN = "emailForSignIn";
 
 const clientCredentials = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -16,7 +20,6 @@ const clientCredentials = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const APP_URL = "artisane-git-fix-subscribe-xavier-charles.vercel.app";
 const actionCodeSettings = {
   url: `https://${APP_URL}/subscribe`,
   // This must be true.
@@ -38,7 +41,8 @@ export const handleEmailSubscribe = (name, email, callback) => {
       // The link was successfully sent. Inform the user.
       // Save the email locally so you don't need to ask the user for it again
       // if they open the link on the same device.
-      window.localStorage.setItem("emailForSignIn", email);
+      window.localStorage.setItem(LS_EMAIL_FOR_SIGN_IN, email);
+      window.localStorage.setItem(LS_NAME_FOR_SIGN_IN, name);
       callback({ status: "success" });
     })
     .catch((error) => {
@@ -55,7 +59,7 @@ export const verifyEmailLink = (callback) => {
     // the sign-in operation.
     // Get the email if available. This should be available if the user completes
     // the flow on the same device where they started it.
-    let email = window.localStorage.getItem("emailForSignIn");
+    let email = window.localStorage.getItem(LS_EMAIL_FOR_SIGN_IN);
     if (!email) {
       // User opened the link on a different device. To prevent session fixation
       // attacks, ask the user to provide the associated email again. For example:
@@ -67,8 +71,6 @@ export const verifyEmailLink = (callback) => {
     signInWithEmailLink(auth, email, window.location.href)
       .then(async (result) => {
         const { user } = result;
-        // Clear email from storage.
-        window.localStorage.removeItem("emailForSignIn");
         // You can access the new user via result.user
         // Additional user info profile not available via:
         // result.additionalUserInfo.profile == null
@@ -77,20 +79,19 @@ export const verifyEmailLink = (callback) => {
         console.log(result);
 
         try {
-          console.log("called");
-          const data = await setDoc(
-            doc(db, FIREBASE_USER_COLLECTION_NAME, user.uid),
-            {
-              id: user.uid,
-              email: user.email,
-              emailVerified: true,
-              updatedAt: user.metadata.lastSignInTime,
-              createdAt: user.metadata.creationTime,
-            }
-          );
-          console.log(data);
-
+          let name = window.localStorage.getItem(LS_NAME_FOR_SIGN_IN);
+          await setDoc(doc(db, FIREBASE_USER_COLLECTION_NAME, user.uid), {
+            id: user.uid,
+            email: user.email,
+            ...(name && { name }),
+            emailVerified: true,
+            updatedAt: user.metadata.lastSignInTime,
+            createdAt: user.metadata.creationTime,
+          });
           if (callback) callback(user.uid);
+          // Clear email & name from storage.
+          window.localStorage.removeItem(LS_EMAIL_FOR_SIGN_IN);
+          window.localStorage.removeItem(LS_NAME_FOR_SIGN_IN);
         } catch (error) {
           console.error("FirebaseContext::signInWithEmailLink:setDoc: ", error);
         }
@@ -105,13 +106,13 @@ export const verifyEmailLink = (callback) => {
 
 // get user
 export const getUserbyId = async (uid, callback) => {
-  console.log("called: getUserbyId");
-  db.collection(FIREBASE_USER_COLLECTION_NAME)
-    .doc(uid)
-    .get()
+  console.log("called: getUserbyId", uid);
+
+  const docRef = doc(db, FIREBASE_USER_COLLECTION_NAME, uid);
+  getDoc(docRef)
     .then((res) => {
       console.log(res);
-      callback(user);
+      // callback(user);
     })
     .catch((err) => console.log("FirebaseContext::getUserbyId: ", err));
 };
