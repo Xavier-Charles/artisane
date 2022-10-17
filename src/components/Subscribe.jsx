@@ -1,10 +1,17 @@
-import React, { useState } from "react";
-import { handleEmailSubscribe } from "../context/firebaseContext";
+import React, { useEffect, useState } from "react";
+import {
+  handleEmailSubscribe,
+  verifyEmailLink,
+} from "../context/firebaseContext";
 
 const Subscribe = () => {
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [response, setResponse] = useState(null);
+
+  useEffect(() => {
+    verifyEmailLink();
+  }, []);
 
   return (
     <div className="lg:w-1/3 md:w-1/2 w-full bg-white flex flex-col pt-16 mt-8 md:mt-0 px-5">
