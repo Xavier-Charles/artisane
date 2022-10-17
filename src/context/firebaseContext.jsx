@@ -3,7 +3,7 @@ import {
   getAuth,
   isSignInWithEmailLink,
   signInWithEmailLink,
-  sendSignInLinkToEmail
+  sendSignInLinkToEmail,
 } from "firebase/auth";
 
 const clientCredentials = {
@@ -15,21 +15,20 @@ const clientCredentials = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const appUrl = "artisane-git-fix-subscribe-xavier-charles.vercel.app";
-
-const actionCodeSettings = {
-  // URL you want to redirect back to. The domain (www.example.com) for this
-  // URL must be in the authorized domains list in the Firebase Console.
-  url: `https://${appUrl}/subscribe`,
-  // This must be true.
-  handleCodeInApp: true,
-};
-
 const firebaseApp = getApps().length
   ? getApp()
   : initializeApp(clientCredentials);
 
 const auth = getAuth(firebaseApp);
+const db = getFirestore(app);
+
+const APP_URL = "artisane-git-fix-subscribe-xavier-charles.vercel.app";
+
+const actionCodeSettings = {
+  url: `https://${APP_URL}/subscribe`,
+  // This must be true.
+  handleCodeInApp: true,
+};
 
 export const handleEmailSubscribe = (name, email, callback) => {
   sendSignInLinkToEmail(auth, email, actionCodeSettings)
@@ -41,9 +40,7 @@ export const handleEmailSubscribe = (name, email, callback) => {
       callback({ status: "success" });
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
-      console.log({ error }); // TODO remove this
       callback({ status: "error", message: errorMessage });
     });
 };
@@ -60,11 +57,14 @@ export const verifyEmailLink = () => {
     if (!email) {
       // User opened the link on a different device. To prevent session fixation
       // attacks, ask the user to provide the associated email again. For example:
-      email = window.prompt("Please provide your email for confirmation");
+      email = window.prompt(
+        "Please open this link on the same device you filled your details."
+      );
     }
     // The client SDK will parse the code from the link for you.
     signInWithEmailLink(auth, email, window.location.href)
-      .then((result) => {
+      .then(async (result) => {
+        const { user } = result;
         // Clear email from storage.
         window.localStorage.removeItem("emailForSignIn");
         // You can access the new user via result.user
@@ -73,6 +73,18 @@ export const verifyEmailLink = () => {
         // You can check if the user is new or existing:
         // result.additionalUserInfo.isNewUser
         console.log(result);
+
+        try {
+          await setDoc(collection(db, "users"), {
+            id: user.uid,
+            email: user.email,
+            emailVerified: true,
+            updatedAt: user.metadata.lastSignInTime,
+            createdAt: user.metadata.creationTime,
+          });
+        } catch (error) {
+          Logger.error("FirebaseContext::signInWithEmailLink: ", error);
+        }
       })
       .catch((error) => {
         // Some error occurred, you can inspect the code: error.code
