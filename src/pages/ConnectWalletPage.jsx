@@ -1,16 +1,16 @@
 import React from "react";
+import { ConnectWallet } from "../components/connectWallet";
 import Navbar from "../components/Navbar";
-import SubmitWork from "../components/SubmitWork";
 
-const SubmitWorkPage = () => {
+const ConnectWalletPage = () => {
   return (
     <>
       <Navbar noballot />
       <div className="w-fullh-full max-w-7xl mt-10 md:mt-20 mx-auto">
-        <SubmitWork />
+        <ConnectWallet />
       </div>
     </>
   );
 };
 
-export default SubmitWorkPage;
+export default ConnectWalletPage;
