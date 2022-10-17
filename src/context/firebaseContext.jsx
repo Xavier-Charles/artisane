@@ -5,6 +5,7 @@ import {
   signInWithEmailLink,
   sendSignInLinkToEmail,
 } from "firebase/auth";
+import { setDoc, collection, getFirestore } from "firebase/firestore";
 
 const clientCredentials = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -15,20 +16,22 @@ const clientCredentials = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const firebaseApp = getApps().length
-  ? getApp()
-  : initializeApp(clientCredentials);
-
-const auth = getAuth(firebaseApp);
-const db = getFirestore(app);
-
-const APP_URL = "artisane-git-fix-subscribe-xavier-charles.vercel.app";
-
 const actionCodeSettings = {
   url: `https://${APP_URL}/subscribe`,
   // This must be true.
   handleCodeInApp: true,
 };
+
+const FIREBASE_USER_COLLECTION_NAME = "users";
+
+const firebaseApp = getApps().length
+  ? getApp()
+  : initializeApp(clientCredentials);
+
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
+
+const APP_URL = "artisane-git-fix-subscribe-xavier-charles.vercel.app";
 
 export const handleEmailSubscribe = (name, email, callback) => {
   sendSignInLinkToEmail(auth, email, actionCodeSettings)
@@ -75,22 +78,38 @@ export const verifyEmailLink = () => {
         console.log(result);
 
         try {
-          await setDoc(collection(db, "users"), {
+          await setDoc(collection(db, FIREBASE_USER_COLLECTION_NAME), {
             id: user.uid,
             email: user.email,
             emailVerified: true,
             updatedAt: user.metadata.lastSignInTime,
             createdAt: user.metadata.creationTime,
           });
+
+          return user.uid;
         } catch (error) {
-          Logger.error("FirebaseContext::signInWithEmailLink: ", error);
+          console.error("FirebaseContext::signInWithEmailLink:setDoc: ", error);
         }
       })
       .catch((error) => {
         // Some error occurred, you can inspect the code: error.code
         // Common errors could be invalid email and invalid or expired OTPs.
+        console.error("FirebaseContext::signInWithEmailLink: ", error);
       });
   }
+};
+
+// get user
+export const getUserbyId = async (uid, callback) => {
+  db.collection(FIREBASE_USER_COLLECTION_NAME)
+    .doc(uid)
+    .get()
+    .then((res) => {
+      console.log(res);
+      callback(user);
+    })
+    .catch((err) => console.log("FirebaseContext::getUserbyId: ", err));
+  
 };
 
 // TODO use this later

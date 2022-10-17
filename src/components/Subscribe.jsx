@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import {
+  getUserbyId,
   handleEmailSubscribe,
   verifyEmailLink,
 } from "../context/firebaseContext";
+import { UserContext } from "../context/userContext";
 
 const Subscribe = () => {
+  const [searchParams] = useSearchParams();
+  const { setUser, user } = useContext(UserContext);
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [response, setResponse] = useState(null);
 
   useEffect(() => {
-    verifyEmailLink();
+    const searchParamApikey = searchParams.get("apiKey");
+    if (searchParamApikey === import.meta.env.VITE_FIREBASE_API_KEY) {
+      const userId = verifyEmailLink();
+
+      if (userId) getUserbyId(userId, setUser);
+    }
   }, []);
 
   return (
@@ -28,6 +39,7 @@ const Subscribe = () => {
         <label htmlFor="name" className="leading-7 text-sm text-gray-600">
           Name
         </label>
+        {console.log(user)}
         <input
           type="text"
           id="name"
