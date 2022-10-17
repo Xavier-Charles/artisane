@@ -76,7 +76,6 @@ export const verifyEmailLink = (callback) => {
         // result.additionalUserInfo.profile == null
         // You can check if the user is new or existing:
         // result.additionalUserInfo.isNewUser
-        console.log(result);
 
         try {
           let name = window.localStorage.getItem(LS_NAME_FOR_SIGN_IN);
@@ -106,15 +105,13 @@ export const verifyEmailLink = (callback) => {
 
 // get user
 export const getUserbyId = async (uid, callback) => {
-  console.log("called: getUserbyId", uid);
 
   const docRef = doc(db, FIREBASE_USER_COLLECTION_NAME, uid);
   getDoc(docRef)
     .then((res) => {
-      console.log(res);
-      // callback(user);
+      callback(res.data());
     })
-    .catch((err) => console.log("FirebaseContext::getUserbyId: ", err));
+    .catch((err) => console.error("FirebaseContext::getUserbyId: ", err));
 };
 
 // TODO use this later
