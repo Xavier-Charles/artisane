@@ -77,13 +77,18 @@ export const verifyEmailLink = (callback) => {
         console.log(result);
 
         try {
-          await setDoc(collection(db, FIREBASE_USER_COLLECTION_NAME), {
-            id: user.uid,
-            email: user.email,
-            emailVerified: true,
-            updatedAt: user.metadata.lastSignInTime,
-            createdAt: user.metadata.creationTime,
-          });
+          console.log("called");
+          const data = await setDoc(
+            collection(db, FIREBASE_USER_COLLECTION_NAME),
+            {
+              id: user.uid,
+              email: user.email,
+              emailVerified: true,
+              updatedAt: user.metadata.lastSignInTime,
+              createdAt: user.metadata.creationTime,
+            }
+          );
+          console.log(data);
 
           if (callback) callback(user.uid);
         } catch (error) {
@@ -100,6 +105,7 @@ export const verifyEmailLink = (callback) => {
 
 // get user
 export const getUserbyId = async (uid, callback) => {
+  console.log("called: getUserbyId");
   db.collection(FIREBASE_USER_COLLECTION_NAME)
     .doc(uid)
     .get()
