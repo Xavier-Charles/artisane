@@ -16,6 +16,7 @@ const clientCredentials = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
+const APP_URL = "artisane-git-fix-subscribe-xavier-charles.vercel.app";
 const actionCodeSettings = {
   url: `https://${APP_URL}/subscribe`,
   // This must be true.
@@ -31,7 +32,6 @@ const firebaseApp = getApps().length
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
-const APP_URL = "artisane-git-fix-subscribe-xavier-charles.vercel.app";
 
 export const handleEmailSubscribe = (name, email, callback) => {
   sendSignInLinkToEmail(auth, email, actionCodeSettings)
