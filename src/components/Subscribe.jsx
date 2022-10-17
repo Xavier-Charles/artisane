@@ -1,29 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useContext } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
-import {
-  getUserbyId,
-  handleEmailSubscribe,
-  verifyEmailLink,
-} from "../context/firebaseContext";
-import { UserContext } from "../context/userContext";
 
-const Subscribe = () => {
-  const [searchParams] = useSearchParams();
-  const { setUser, user } = useContext(UserContext);
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [response, setResponse] = useState(null);
-
-  useEffect(() => {
-    const searchParamApikey = searchParams.get("apiKey");
-    if (searchParamApikey === import.meta.env.VITE_FIREBASE_API_KEY) {
-      const userId = verifyEmailLink();
-
-      if (userId) getUserbyId(userId, setUser);
-    }
-  }, []);
-
+const Subscribe = ({ response, onSubscribe, setName, setEmail }) => {
   return (
     <div className="lg:w-1/3 md:w-1/2 w-full bg-white flex flex-col pt-16 mt-8 md:mt-0 px-5">
       <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
@@ -39,7 +16,6 @@ const Subscribe = () => {
         <label htmlFor="name" className="leading-7 text-sm text-gray-600">
           Name
         </label>
-        {console.log(user)}
         <input
           type="text"
           id="name"
@@ -63,7 +39,7 @@ const Subscribe = () => {
         />
       </div>
       <button
-        onClick={() => handleEmailSubscribe(name, email, setResponse)}
+        onClick={onSubscribe}
         className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
       >
         Submit
