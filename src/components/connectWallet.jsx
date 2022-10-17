@@ -20,6 +20,10 @@ export const ConnectWallet = () => {
           account &&
           chain &&
           (!authenticationStatus || authenticationStatus === "authenticated");
+
+          if (connected) {
+            
+          }
         return (
           <div
             {...(!ready && {
