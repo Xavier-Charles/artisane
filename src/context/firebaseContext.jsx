@@ -5,7 +5,7 @@ import {
   signInWithEmailLink,
   sendSignInLinkToEmail,
 } from "firebase/auth";
-import { setDoc, collection, getFirestore } from "firebase/firestore";
+import { setDoc, getFirestore, doc } from "firebase/firestore";
 
 const clientCredentials = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -79,7 +79,7 @@ export const verifyEmailLink = (callback) => {
         try {
           console.log("called");
           const data = await setDoc(
-            collection(db, FIREBASE_USER_COLLECTION_NAME),
+            doc(db, FIREBASE_USER_COLLECTION_NAME, user.uid),
             {
               id: user.uid,
               email: user.email,
