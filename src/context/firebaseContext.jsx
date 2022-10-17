@@ -32,7 +32,6 @@ const firebaseApp = getApps().length
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
-
 export const handleEmailSubscribe = (name, email, callback) => {
   sendSignInLinkToEmail(auth, email, actionCodeSettings)
     .then(() => {
@@ -49,7 +48,7 @@ export const handleEmailSubscribe = (name, email, callback) => {
 };
 
 // Confirm the link is a sign-in with email link.
-export const verifyEmailLink = () => {
+export const verifyEmailLink = (callback) => {
   if (isSignInWithEmailLink(auth, window.location.href)) {
     // Additional state parameters can also be passed via URL.
     // This can be used to continue the user's intended action before triggering
@@ -86,7 +85,7 @@ export const verifyEmailLink = () => {
             createdAt: user.metadata.creationTime,
           });
 
-          return user.uid;
+          if (callback) callback(user.uid);
         } catch (error) {
           console.error("FirebaseContext::signInWithEmailLink:setDoc: ", error);
         }
@@ -109,7 +108,6 @@ export const getUserbyId = async (uid, callback) => {
       callback(user);
     })
     .catch((err) => console.log("FirebaseContext::getUserbyId: ", err));
-  
 };
 
 // TODO use this later

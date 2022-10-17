@@ -19,9 +19,8 @@ const SubscribePage = () => {
   useEffect(() => {
     const searchParamApikey = searchParams.get("apiKey");
     if (searchParamApikey === import.meta.env.VITE_FIREBASE_API_KEY) {
-      const userId = verifyEmailLink();
-
-      if (userId) getUserbyId(userId, setUser);
+      const getUser = getUserbyId(userId, setUser);
+      verifyEmailLink(getUser);
     }
   }, []);
   const onSubscribe = () => handleEmailSubscribe(name, email, setResponse);
