@@ -5,6 +5,7 @@ import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import BallotContextProvider from "./context/ballotContext";
 import WalletProvider from "./provider/WalletProvider";
+import { AuthProvider } from "./context/UserContext";
 
 const container = document.getElementById("root");
 
@@ -17,7 +18,9 @@ root.render(
     <BrowserRouter>
       <WalletProvider>
         <BallotContextProvider>
+          <AuthProvider>
             <Router />
+          </AuthProvider>
         </BallotContextProvider>
       </WalletProvider>
     </BrowserRouter>
