@@ -20,7 +20,7 @@ export const artWorks = [
       "Learning how to express one's self can be in immersive journey. Every choice you make and every door you enter both physical and imaginative can change the course of your life. I chose freedom, regardless of how i was feeling inside. These past months has been a blur and all I've learned from this befuddled idling was to just be me.",
   },
   {
-    _id: "qwert6yui1",
+    _id: "qwert6yui12",
     artistFN: "Nik",
     artistLN: "Ainley",
     artist: "Nik AInley",
@@ -40,7 +40,7 @@ export const artWorks = [
       "Learning how to express one's self can be in immersive journey. Every choice you make and every door you enter both physical and imaginative can change the course of your life. I chose freedom, regardless of how i was feeling inside. These past months has been a blur and all I've learned from this befuddled idling was to just be me.",
   },
   {
-    _id: "qwer3tyui1",
+    _id: "qwer3tyui1l",
     artistFN: "Aiste",
     artistLN: "Stancikaite",
     artist: "Aiste Stancikaite",
@@ -50,7 +50,7 @@ export const artWorks = [
       "Learning how to express one's self can be in immersive journey. Every choice you make and every door you enter both physical and imaginative can change the course of your life. I chose freedom, regardless of how i was feeling inside. These past months has been a blur and all I've learned from this befuddled idling was to just be me.",
   },
   {
-    _id: "qwer3tyui1",
+    _id: "qwer3tyui1p",
     artistFN: "Sara",
     artistLN: "Ludy",
     artist: "Sara Ludy",
@@ -60,7 +60,7 @@ export const artWorks = [
       "Learning how to express one's self can be in immersive journey. Every choice you make and every door you enter both physical and imaginative can change the course of your life. I chose freedom, regardless of how i was feeling inside. These past months has been a blur and all I've learned from this befuddled idling was to just be me.",
   },
   {
-    _id: "qwer3tyui1",
+    _id: "qwer3tyui1h",
     artistFN: "Erik",
     artistLN: "Johansson",
     artist: "Erik Johansson",
@@ -70,7 +70,7 @@ export const artWorks = [
       "Learning how to express one's self can be in immersive journey. Every choice you make and every door you enter both physical and imaginative can change the course of your life. I chose freedom, regardless of how i was feeling inside. These past months has been a blur and all I've learned from this befuddled idling was to just be me.",
   },
   {
-    _id: "qwer3tyui1",
+    _id: "qwer3tyui1c",
     artistFN: "Hal",
     artistLN: "Lasko",
     artist: "The Pixel Painter",
